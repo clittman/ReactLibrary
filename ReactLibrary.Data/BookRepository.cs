@@ -21,6 +21,7 @@ namespace ReactLibrary.Data
         public List<Book> GetBooks(string text)
         {
             string url = $"http://books-api.lit-projects.com/books/search?query={text}";
+            var books = new List<Book>();
 
             using var client = new HttpClient();
 
@@ -30,6 +31,7 @@ namespace ReactLibrary.Data
             {
                 PropertyNameCaseInsensitive = true
             });
+
         }
 
         public void AddBook(Book b)
@@ -41,7 +43,7 @@ namespace ReactLibrary.Data
 
         public void RemoveBook(Book b, int userId)
         {
-            if(!CheckBook(b, userId))
+            if (!CheckBook(b, userId))
             {
                 return;
             };
